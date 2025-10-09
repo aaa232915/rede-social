@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>posts
+    </title>
+</head>
+<body>
+    <script>
+    async function uploud(imagem ) {
+      try {
+        // Seleciona a rota a ser usada
+        const resposta = await fetch('http://localhost:3000/uploud', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          // Encaminha os dados que vieram como parametro no corpo do arquivo JSON
+          body: JSON.stringify({
+            nomeUsuario: nomeUsuario,
+            senha: senha
+          })
+      });
+  
+    
+    
+
+      // A variável dados recebe um objeto produto
+      const dados = await resposta.json();
+    
+      if (resposta.ok) {
+        console.log("O novo usuário foi cadastrado com sucesso.")
+      } else {
+        switch (resposta.status) {
+          case 400:
+            console.warn('⚠️ Produto não encontrado');
+            break;
+          case 401:
+            console.warn('⚠️ Produto não encontrado');
+            break;
+          case 500:
+            console.warn('💥 Erro interno no servidor. Tente novamente mais tarde.');
+            break;
+          default:
+            console.warn(`❗ Erro inesperado: ${resposta.status}`);
+        }
+
+        console.debug('Detalhes do erro:', dados.mensagem || dados);
+      }} catch (erro) {
+       console.error('🚫 Erro ao tentar buscar o produto:', erro.message);
+      }
+    }
+   
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // impede o reload da página
+
+      const nome = document.getElementById("nomeUsuario").value;
+      const senha = document.getElementById("senha").value;
+
+      
+      // cadastra o produto no banco de dados
+      cadastrarUsuario(nomeUpper, senha);
+
+      // cria o item da lista
+      const li = document.createElement("li");
+      li.textContent = `${nomeUpper}  ${senha}`;
+
+      // adiciona na lista
+      lista.appendChild(li);
+
+      // limpa os campos
+      form.reset();
+    });
+    </script>
+</body>
+</html>

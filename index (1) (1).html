@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+      <link rel="icon" type="image/png" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>Cadastro de novo usuário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #e6e0ff71;
+      text-align: center;
+      align-items: center;
+    }
+
+    form {
+      justify-content: center;
+      
+      margin-bottom: 20px;
+      padding: 15px; 
+      background: #c9f8ffbd;
+      border-radius: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-left: 605px;
+      height: 300px;
+      width: 700px;
+      
+    }
+
+    input, button {
+      padding: 8px;
+      margin: 5px 0;
+      width: 670px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      
+      align-items: center;
+    }
+
+    button {
+      background: #e6e0ff;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      cursor: pointer;
+      width: 690px;
+      margin-left: 10px;
+
+    }
+
+    button:hover {
+      background: #e6e0ff;
+      width: 98%;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    h2{
+      text-align: center;
+    }
+    li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    a{
+      color: black;
+      text-align: center;
+    }
+    input{
+      margin-left: 10px;
+      
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <form id="formCadastro"> 
+    <h1 >Cadastrar-se</h1>
+    <label for="nomeUsuario">Crie um nome de usuário:</label>
+    <input type="text" id="nomeUsuario" required>
+    <label for="text">Crie uma senha:</label>
+    <input type="password" id="senha" required>
+
+      <button type="submit">Cadastrar-se</button>
+
+    <a href="pagina2.html"><p>Já tenho conta</p></a>
+  </form>
+  <!-- <h2>Lista de acessos</h2>
+  <ul id="listaAcessos"></ul> -->
+
+  <script>
+    
+    const form = document.getElementById("formCadastro");
+    // const lista = document.getElementById("listaAcessos");
+
+    async function cadastrarUsuario(nomeUsuario, senha ) {
+      try {
+        // Seleciona a rota a ser usada
+        const resposta = await fetch('http://localhost:3000/cadastro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          // Encaminha os dados que vieram como parametro no corpo do arquivo JSON
+          body: JSON.stringify({
+            nomeUsuario: nomeUsuario,
+            senha: senha
+          })
+      });
+  
+      // A variável dados recebe um objeto produto
+      const dados = await resposta.json();
+    
+      if (resposta.ok) {
+        console.log("O novo usuário foi cadastrado com sucesso.")
+      } else {
+        switch (resposta.status) {
+          case 400:
+            console.warn('⚠️ Produto não encontrado');
+            break;
+          case 401:
+            console.warn('⚠️ Produto não encontrado');
+            break;
+          case 500:
+            console.warn('💥 Erro interno no servidor. Tente novamente mais tarde.');
+            break;
+          default:
+            console.warn(`❗ Erro inesperado: ${resposta.status}`);
+        }
+
+        console.debug('Detalhes do erro:', dados.mensagem || dados);
+      }} catch (erro) {
+       console.error('🚫 Erro ao tentar buscar o produto:', erro.message);
+      }
+    }
+   
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // impede o reload da página
+
+      const nomeUsuario = document.getElementById("nomeUsuario").value;
+      const senha = document.getElementById("senha").value;
+
+      
+      // cadastra o produto no banco de dados
+      cadastrarUsuario(nomeUsuario, senha);
+
+      
+
+      // cria o item da lista
+      const li = document.createElement("li");
+      li.textContent = `${nomeUsuario}  ${senha}`;
+
+      // adiciona na lista
+      
+
+      // limpa os campos
+      form.reset();
+    });
+
+
+
+    
+    /*form.addEventListener("submit", function(event) {
+      event.preventDefault(); // impede o reload da página
+
+      const nome = document.getElementById("nomeUsuario").value;
+      const senha = document.getElementById("senha").value;
+
+      
+      // cadastra o produto no banco de dados
+      entrarConta(nomeUsuario, senha);
+
+  
+
+      // cria o item da lista
+     
+
+      // limpa os campos
+      form.reset();
+    });
+    */
+
+    </script>
+   
+   
+</body>
+</html>
