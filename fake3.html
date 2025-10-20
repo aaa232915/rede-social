@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        
+
+        body{
+            background: radial-gradient(circle, #9de3ff, #f3bef3);
+        
+        }
+        img{
+            height:200px;
+            width: 200px;
+            border: solid white;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 10px;
+
+        }
+        .perfis{
+            display: flex;
+            justify-content: center;
+            border-radius: 10%;
+
+        }
+        
+       
+        section{
+
+           /* border-left: 20px;   */
+          
+            display: flex;
+            justify-content: center;
+        
+        }
+
+        img{
+            width: 120px;
+            height: 120px;
+            /* border: 80px; */
+            margin-right: 10px;
+            /* margin-left: 20px; */
+        }
+        .logo{
+            /* text-align: center; */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-left: 20px;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            
+        }
+       
+        
+        h1{
+            /* margin-left: 100px; */
+            text-align: center;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            
+            font-size: 40px;
+        }
+        .feed{
+            margin-left: 450px;
+           
+            /* align-items: center; */
+            text-align: left;
+            color: rgb(255, 255, 255);
+            margin-top: 20px;
+            border: solid white;
+            background-color: rgba(11, 0, 0, 0.478);
+            justify-content: center;
+           display: flex;
+            width: 525px;
+            align-content: center;
+        } 
+       h2{
+        margin-right: 0px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: white;
+        
+       }
+       .fotoPerfil{
+        display: flex;
+       }
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.heart {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: white;
+  transform: rotate(-45deg);
+  transition: background 0.3s;
+  /* margin-left: 400px; */
+  
+  margin-top: 10px;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+  
+}
+
+.like-button.liked .heart,
+.like-button.liked .heart::before,
+.like-button.liked .heart::after {
+  background: red;
+  
+}
+
+p{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+    width: 300px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+   
+   
+
+    .post1{
+        display: flex;
+        
+    }
+    main{
+        display: flex
+        
+    }
+    .foto1{
+        margin-left: 200px;
+        
+
+    }
+    .foto2{
+        margin-left: 50px;
+
+    }
+    .foto3{
+        margin-left: 50px;
+    }
+    button{
+        margin-left: 150px;
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <div class="fotoPerfil">
+        <a href="redeSocial.html"><img src="https://i.pinimg.com/736x/e7/26/9b/e7269b9a07253fed79b6f610da3e6ec2.jpg" alt="pinterest" style="border-radius: 80%;"></a>
+            <h1>@nahValente</h1>
+    </div>
+
+
+    <main>
+
+        <div class="foto1">
+
+            <img  src= "https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/nationalgeographic2709972.webp?w=1600&h=900" alt="Milena" style="height: 300px; width: 300px;">
+
+            <button class="like-button" onclick="toggleLike(this)">
+                    <div class="heart"></div>
+                </button>
+
+        </div>
+
+        <div id="foto2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNWm2E24Z7FCRn5-BwaR-Y8kyutf-cMQ8Fme5f9E6Rab-M5YxUR_EC2Qu0XyuDJVglA_I&usqp=CAU" alt="google" style="height: 300px; width: 300px;">
+            <button class="like-button" onclick="toggleLike(this)">
+                    <div class="heart"></div>
+                </button>
+
+        </div>
+        
+        <div id="foto3">
+            <img src="https://i.pinimg.com/736x/80/87/41/8087415e96d683c8a412eb540a2e5c58.jpg" alt="google" style="height: 300px; width: 300px;">
+            <button class="like-button" onclick="toggleLike(this)">
+                    <div class="heart"></div>
+                </button>
+        </div>
+    
+
+    </div>
+
+    </main>
+
+        <script>
+        function toggleLike(button) {
+        button.classList.toggle('liked');
+        }
+        </script>
+        
+    </div>
+    
+</body>
+</html>
