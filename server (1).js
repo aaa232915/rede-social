@@ -97,6 +97,36 @@ app.post('/entrar', async (req, res) => {
   }
 });
 
+// app.post('/entrar', (req, res) => {
+//   const { Nome_roupa } = req.body;
+
+//   if (!Nome_roupa) {
+//     return res.status(400).json({ error: 'O código do produto não pode ser em branco' });
+//   }
+
+//   // Realiza a consulta no banco de dados
+//   const sql = 'SELECT * FROM Roupas WHERE Nome_roupa = ?';
+//   db.query(sql, [Nome_roupa], (err, results) => {
+//     if (err) {
+//       return res.status(500).json({ error: err.message });
+//     }
+
+//     if (results.length === 0) {
+//       return res.status(401).json({ error: 'Credenciais inválidas' });
+//     }
+
+//     // quanto achou o resultado
+//     const roupa = results[0];
+//     res.json({
+//       message: 'Produto encontrado',
+//       roupa: {
+//        quantidade: roupa.Quant_roupa,
+//        preco: roupa.Preco_roupa
+//       }
+//     });
+//   });
+// });
+
 // Start server
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');

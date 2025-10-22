@@ -86,16 +86,25 @@
     <label for="text">Crie uma senha:</label>
     <input type="password" id="senha" required>
 
-      <button type="submit">Cadastrar-se</button>
+      <!-- <button type="submit">Cadastrar-se</button>
 
-    <a href="pagina2.html"><p>Já tenho conta</p></a>
+    <a href="pagina2.html"><p>Já tenho conta</p></a> -->
+
+    <button id="botãoPrincipal" class="botão" type="submit">Cadastrar</button>
+                    <br>
+                    <br>
+                    <button class="botão"><a href="pagIncio.html">Voltar ao inicio</a>></button>
+            
+        
   </form>
   <!-- <h2>Lista de acessos</h2>
   <ul id="listaAcessos"></ul> -->
 
+  
+
   <script>
     
-    const form = document.getElementById("formCadastro");
+    
     // const lista = document.getElementById("listaAcessos");
 
     async function cadastrarUsuario(nomeUsuario, senha ) {
@@ -138,32 +147,31 @@
        console.error('🚫 Erro ao tentar buscar o produto:', erro.message);
       }
     }
-   
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); // impede o reload da página
+    const form = document.querySelector("form"); // 
 
-      const nomeUsuario = document.getElementById("nomeUsuario").value;
-      const senha = document.getElementById("senha").value;
+      form.addEventListener("submit", function(event) {
+          event.preventDefault(); // impede o reload da página
 
-      
-      // cadastra o produto no banco de dados
-      cadastrarUsuario(nomeUsuario, senha);
+          const nomeUsuario = document.getElementById("nomeUsuario").value;
+          const senha = document.getElementById("senha").value;
 
-      
+          
+          // cadastra o produto no banco de dados
+          cadastrarUsuario(nomeUsuario, senha);
 
-      // cria o item da lista
-      const li = document.createElement("li");
-      li.textContent = `${nomeUsuario}  ${senha}`;
+          
 
-      // adiciona na lista
-      
+          // cria o item da lista
+          const li = document.createElement("li");
+          li.textContent = `${nomeUsuario}  ${senha}`;
 
-      // limpa os campos
-      form.reset();
+          // adiciona na lista
+          window.location.replace("redeSocial.html"); // faz o redirecionamento
+
+          // limpa os campos
+          form.reset();
     });
-
-
 
     
     /*form.addEventListener("submit", function(event) {
